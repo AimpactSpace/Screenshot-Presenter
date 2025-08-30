@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Screenshot Presenter</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Screenshot Presenter</h1>
+        <p>Upload an image to auto‑style with gradient background and a subtle border. Then save it.</p>
+      </header>
+
+      <section class="uploader" id="dropzone">
+        <input id="fileInput" type="file" accept="image/*" />
+        <p>Drag & drop or click to upload</p>
+      </section>
+
+      <section class="controls">
+        <div class="control-group">
+          <h3>Composition</h3>
+          <label>Padding
+            <input id="paddingInput" type="range" min="40" max="200" value="96" />
+          </label>
+          <label>Corner radius
+            <input id="radiusInput" type="range" min="0" max="48" value="24" />
+          </label>
+        </div>
+
+        <div class="control-group">
+          <h3>Background Gradient</h3>
+          <div class="segmented">
+            <label class="seg"><input type="radio" name="gradMode" id="gradientModeAuto" checked> Auto</label>
+            <label class="seg"><input type="radio" name="gradMode" id="gradientModeCustom"> Custom</label>
+          </div>
+          <div class="row">
+            <label>Start
+              <input id="gradientStart" type="color" value="#6c5ce7" disabled />
+            </label>
+            <label>End
+              <input id="gradientEnd" type="color" value="#00d9ff" disabled />
+            </label>
+          </div>
+          <button id="randomizeBtn" type="button">Shuffle Gradient</button>
+        </div>
+
+        <div class="control-group">
+          <h3>Border</h3>
+          <label>Size (px)
+            <input id="borderSizeInput" type="range" min="0" max="16" value="2" />
+          </label>
+          <label>Opacity (%)
+            <input id="borderOpacityInput" type="range" min="0" max="100" value="50" />
+          </label>
+        </div>
+
+        <div class="control-group">
+          <h3>Export</h3>
+          <label>Format
+            <select id="formatSelect">
+              <option value="png" selected>PNG</option>
+              <option value="jpeg">JPEG</option>
+            </select>
+          </label>
+          <button id="downloadBtn" type="button" disabled>Download</button>
+        </div>
+      </section>
+
+      <section class="stage">
+        <canvas id="canvas" width="1200" height="800" aria-label="Output canvas"></canvas>
+      </section>
+
+      <section class="templates">
+        <div class="templates-header">
+          <h2>Templates</h2>
+          <div class="template-actions">
+            <input id="templateName" type="text" placeholder="Template name (e.g. Bold Blue)" />
+            <button id="saveTemplateBtn" type="button" disabled>Save Template</button>
+          </div>
+        </div>
+        <div id="templatesGrid" class="templates-grid" aria-live="polite"></div>
+      </section>
+
+      <footer class="footer">
+        <small>Tune padding, radius, border and gradient. Save styles as templates.</small>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+  </html>

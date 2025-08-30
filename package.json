@@ -1,0 +1,42 @@
+{
+  "name": "screenshot-presenter",
+  "productName": "Screenshot Presenter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mac app wrapper for the Screenshot Presenter web app",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "pack": "electron-builder --dir",
+    "build:mac": "electron-builder --mac",
+    "make:icon": "bash scripts/make-icon.sh",
+    "icon:default": "GEN_ICON=1 electron . && bash scripts/make-icon.sh"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.smartshort.screenshotpresenter",
+    "productName": "Screenshot Presenter",
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!node_modules/.cache/**"
+    ],
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.graphics-design",
+      "icon": "build/icon.icns",
+      "target": ["dmg", "zip"],
+      "fileAssociations": [
+        {
+          "ext": ["png", "jpg", "jpeg", "webp", "gif", "tif", "tiff"],
+          "role": "Viewer",
+          "name": "Image file"
+        }
+      ]
+    }
+  }
+}
