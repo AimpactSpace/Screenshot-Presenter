@@ -11,7 +11,8 @@
     "pack": "electron-builder --dir",
     "build:mac": "electron-builder --mac",
     "make:icon": "bash scripts/make-icon.sh",
-    "icon:default": "GEN_ICON=1 electron . && bash scripts/make-icon.sh"
+    "icon:default": "GEN_ICON=1 electron . && bash scripts/make-icon.sh",
+    "release:draft": "bash scripts/create-release.sh"
   },
   "devDependencies": {
     "electron": "^31.0.0",
